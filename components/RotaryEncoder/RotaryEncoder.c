@@ -63,8 +63,8 @@ void func(int evt, int count, int sw, FUNC_POINTER p){
 	p(evt, count, sw);
 }
 
-// Wait event using queue
-static void gpio_task(void *arg)
+// Wait event using task
+static void gpio_task(void *pvParameters)
 {
 	ESP_LOGI(pcTaskGetName(NULL), "Start");
 	PARAMETER_t param;
@@ -77,6 +77,7 @@ static void gpio_task(void *arg)
 	}
 }
 
+// Initialize RotaryEncoder
 void initRotaryEncoder(int GpioPinA, int GpioPinB, int GpioPinSW, FUNC_POINTER callback) {
 	_GpioPinA = GpioPinA;
 	_GpioPinB = GpioPinB;
@@ -140,6 +141,7 @@ void initRotaryEncoder(int GpioPinA, int GpioPinB, int GpioPinSW, FUNC_POINTER c
 	}
 }
 
+// Wait event using function
 int readRotaryEncoder(int * count, int * sw, int * interrupt) {
 	PARAMETER_t param;
 	int _interrupt = 0;
