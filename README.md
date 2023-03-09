@@ -50,4 +50,8 @@ You can change any GPIO using menuconfig.
 The RotaryEncoder has two forms, but the functionality is the same.
 ![rotary-encoder](https://user-images.githubusercontent.com/6020549/223959616-e994e8ad-d612-414a-999e-dfc46d2b193c.jpeg)
 
+# ScreenShot   
+The value of Count changes by 4 per click.   
+![ScreenShot](https://user-images.githubusercontent.com/6020549/223961866-44fbde58-b12e-498a-84e4-c50929e373f5.jpg)
+
 
