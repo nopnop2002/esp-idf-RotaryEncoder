@@ -2,6 +2,7 @@
 RotaryEncoder driver for esp-idf.
 
 I ported from [this](https://haizairenmei.com/2019/12/05/rotary-encoder/).   
+Calculating the direction of movement is very simple.   
 This is the Japanese homepage.    
 
 # Software requirements   
