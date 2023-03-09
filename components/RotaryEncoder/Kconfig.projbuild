@@ -1,0 +1,38 @@
+menu "RotaryEncoder Configuration"
+
+    config GPIO_RANGE_MAX
+        int
+        default 33 if IDF_TARGET_ESP32
+        default 46 if IDF_TARGET_ESP32S2
+        default 48 if IDF_TARGET_ESP32S3
+        default 18 if IDF_TARGET_ESP32C2
+        default 19 if IDF_TARGET_ESP32C3
+
+    config GPIO_OUT_A
+        int "OUT A GPIO number"
+        range 0 GPIO_RANGE_MAX
+        default 15 if IDF_TARGET_ESP32
+        default  1 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
+        default  1 if IDF_TARGET_ESP32C3 || IDF_TARGET_ESP32C2
+        help
+            GPIO number (IOxx) to OUT A.
+
+    config GPIO_OUT_B
+        int "OUT B GPIO number"
+        range 0 GPIO_RANGE_MAX
+        default 16 if IDF_TARGET_ESP32
+        default  2 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
+        default  2 if IDF_TARGET_ESP32C3 || IDF_TARGET_ESP32C2
+        help
+            GPIO number (IOxx) to OUT B.
+
+    config GPIO_SWITCH
+        int "SWITCH GPIO number"
+        range 0 GPIO_RANGE_MAX
+        default 17 if IDF_TARGET_ESP32
+        default  3 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
+        default  3 if IDF_TARGET_ESP32C3 || IDF_TARGET_ESP32C2
+        help
+            GPIO number (IOxx) to SWITCH.
+
+endmenu

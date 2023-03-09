@@ -1,0 +1,18 @@
+menu "Application Configuration"
+
+	choice CALLBACK
+		prompt "API type"
+		default WITH_CALLBACKE
+		help
+			Select API
+		config WITHOUT_CALLBACKE
+			bool "Without Callback"
+			help
+				Without Callback.
+		config WITH_CALLBACKE
+			bool "With Callback"
+			help
+				With Callback.
+	endchoice
+
+endmenu
