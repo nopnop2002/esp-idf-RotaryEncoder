@@ -6,14 +6,15 @@ Calculating the direction of movement is very simple.
 This is the Japanese homepage.    
 
 # Software requirements   
-ESP-IDF V4.4/V5.0.   
-ESP-IDF V5.0 is required when using ESP32-C2.   
+ESP-IDF V5.0 or later.   
+ESP-IDF V4.4 release branch reached EOL in July 2024.   
+ESP-IDF V5.1 is required when using ESP32C6.   
 
 # Installation
 ```
 git clone https://github.com/nopnop2002/esp-idf-RotaryEncoder
 cd esp-idf-RotaryEncoder
-idf.py set-target {esp32/esp32s2/esp32s3/esp32c2/esp32c3}
+idf.py set-target {esp32/esp32s2/esp32s3/esp32c2/esp32c3/esp32c6}
 idf.py menuconfig
 idf.py flash
 ```
@@ -36,11 +37,11 @@ One is an API that uses CallBack and the other is an API that does not use CallB
 
 # Wireing
 
-|RotaryEncoder||ESP32|ESP32-S2/S3|ESP32-C2/C3|
+|RotaryEncoder||ESP32|ESP32-S2/S3|ESP32-C2/C3/C6|
 |:-:|:-:|:-:|:-:|:-:|
-|OUT A|--|GPIO15|GPIO1|GPIO1|
-|OUT B|--|GPIO16|GPIO2|GPIO2|
-|SWITCH|--|GPIO17|GPIO3|GPIO3|
+|OUT A|--|GPIO15|GPIO15|GPIO1|
+|OUT B|--|GPIO16|GPIO16|GPIO2|
+|SWITCH|--|GPIO17|GPIO17|GPIO3|
 |GND|--|GND|GND|GND|
 |VCC|--|3.3V|3.3V|3.3V|
 
@@ -50,6 +51,34 @@ You can change any GPIO using menuconfig.
 
 The RotaryEncoder has two forms, but the functionality is the same.
 ![rotary-encoder](https://user-images.githubusercontent.com/6020549/223959616-e994e8ad-d612-414a-999e-dfc46d2b193c.jpeg)
+
+
+# How to use this component in your project   
+Create idf_component.yml in the same directory as main.c.   
+```
+YourProject --+-- CMakeLists.txt
+              +-- main --+-- main.c
+                         +-- CMakeLists.txt
+                         +-- idf_component.yml
+```
+
+Contents of idf_component.yml.
+```
+dependencies:
+  nopnop2002/RotaryEncoder:
+    path: components/RotaryEncoder
+    git: https://github.com/nopnop2002/esp-idf-RotaryEncoder.git
+```
+
+When you build a projects esp-idf will automaticly fetch repository to managed_components dir and link with your code.   
+```
+YourProject --+-- CMakeLists.txt
+              +-- main --+-- main.c
+              |          +-- CMakeLists.txt
+              |          +-- idf_component.yml
+              +-- managed_components ----- nopnop2002__RotaryEncoder
+```
+
 
 # ScreenShot   
 The value of Count changes by 4 per click.   
