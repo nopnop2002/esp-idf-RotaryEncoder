@@ -49,7 +49,8 @@ static void IRAM_ATTR ChangePinAB(void *arg)
 	}
 }
 
-void ChangePinSW(){
+static void IRAM_ATTR ChangePinSW(void *arg)
+{
 	PARAMETER_t param;
 	param.event = EVENT_ChangePinSW;
 	InterruptCountSW++;
